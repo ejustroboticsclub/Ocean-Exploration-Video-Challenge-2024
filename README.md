@@ -1,7 +1,6 @@
 # Folder Structure
 1. `data/`: Stores various datasets and information crucial for this task.
      - `data/external`: Contains datasets and information sourced from external sources, such as publicly available datasets, third-party providers, or other research projects. These datasets may include images, videos, sensor data, or other types of input data used for training and testing AI models.
-     - `data/interim`: Serves as an intermediate stage in the data preprocessing pipeline. It typically contains partially processed or temporary data files generated during the data preparation phase.
      - `data/processed`: Stores the finalized and processed datasets ready for training AI models.
 1. `images/`: Contains the images used in this directory, including those utilized for making predictions.
 1. `models/`: Stores models used for AI training in this task.
