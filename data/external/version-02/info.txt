@@ -1,0 +1,5 @@
+- data-01:06 : https://universe.roboflow.com/test-xsnip/mate-brittle-star-detection
+
+- data-07    : https://universe.roboflow.com/noaa-wg5ah/brittle-stars
+
+- data-08    : https://universe.roboflow.com/rowan-mohamed/optimized_result
