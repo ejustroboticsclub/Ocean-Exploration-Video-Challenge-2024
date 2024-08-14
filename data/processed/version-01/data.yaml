@@ -1,0 +1,6 @@
+names:
+- Brittle Star
+nc: 1
+test: data/processed/version-01/test/images
+train: data/processed/version-01/train/images
+val: data/processed/version-01/val/images
