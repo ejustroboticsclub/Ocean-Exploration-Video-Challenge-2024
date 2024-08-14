@@ -1,0 +1,7 @@
+train: data/proxessed/version-02/train/images
+val: data/proxessed/version-02/valid/images
+test: data/proxessed/version-02/test/images
+
+nc: 2
+names: ['Brittle Star', 'Not Brittle Star']
+
