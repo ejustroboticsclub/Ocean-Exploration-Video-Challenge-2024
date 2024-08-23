@@ -10,7 +10,7 @@ import platform
 
 
 class App:
-    def __init__(self, root, predictor: Predictor):
+    def __init__(self, root: tk.Tk, predictor: Predictor):
         self.root = root
         self.predictor = predictor
         self.root.title("Brittle Star Detection")
