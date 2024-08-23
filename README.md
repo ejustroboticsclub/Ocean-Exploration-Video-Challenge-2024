@@ -16,7 +16,7 @@ The specific datasets utilized are as follows:
 ### Dataset Versions
 
 To explore different approaches for brittle star detection, two versions of the dataset were created, each with a distinct labeling strategy:
-- **Version 1: Brittle Star Only**
+- **Version 1: Brittle Star Only** </br>
 In this version, the dataset consists of images that contain brittle stars exclusively. The labeling focuses solely on the brittle stars, with bounding boxes drawn around them. This approach resulted in a single-class dataset, where the only class is "Brittle Star." This version is designed to train the model to specifically recognize and locate brittle stars in the images, ignoring other organisms present. The dataset was split as follows:
   - Total Images: 3,031
   - Training Set: 2,121 images (70%)
