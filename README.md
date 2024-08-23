@@ -67,7 +67,7 @@ ___
    ```
    cd Ocean-Exploration-Video-Challenge-2024
    ```
-1. Download the [weights file]() of the trained model and put it in the `weights` directory.
+1. Download the [weights file]()(`last.pt`) of the trained model and put it in the `weights` directory.
 1. Type the following command to install the requirements file using pip:
    ```
    pip install -r requirements.txt
