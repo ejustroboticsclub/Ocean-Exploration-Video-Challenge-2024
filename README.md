@@ -24,7 +24,7 @@ In this version, the dataset consists of images that contain brittle stars exclu
   - Test Set: 304 images (10%)
 
 
-- **Version 2: Brittle Star and Not Brittle Star**
+- **Version 2: Brittle Star and Not Brittle Star** </br>
 The second version of the dataset introduces a two-class labeling scheme. In addition to labeling brittle stars, any other organism present in the images is labeled as "Not Brittle Star." This version of the dataset provides a more comprehensive approach, allowing the model to distinguish between brittle stars and other marine organisms. The "Not Brittle Star" class encompasses all non-brittle star entities, ensuring that the model can differentiate brittle stars from other similar-looking objects. The dataset was split as follows:
   - Total Images: 6,085
   - Training Set: 3,656 images (60%)
