@@ -47,7 +47,7 @@ class Predictor:
 
                     x1, y1, x2, y2 = map(int, bounding_box)
                     conf_text = f'{score:.2f}'
-                    
+
                     # Draw the bounding box
                     cv2.rectangle(image_copy, (x1, y1),
                                   (x2, y2), (0, 255, 0), 2)
