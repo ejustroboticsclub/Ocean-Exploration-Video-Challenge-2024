@@ -77,3 +77,32 @@ ___
    ```
    python3 app.py
    ```
+___
+
+## Usage
+
+#### Processing an Image
+You can use the command-line interface to process images directly:
+```
+python3 predict.py --type image --path path/to/image.jpg --conf-threshold 0.1 --show-conf True
+```
+- `conf-threshold`: Sets the confidence threshold for detection. Only detections with a confidence score higher than this value will be considered. You can adjust this value depending on how strict you want the detection to be.
+- `show-conf`: If set to True, the confidence scores will be displayed on the bounding boxes drawn around detected brittle stars.
+- The results will be saved at `runs/images`. The `runs` directory will be created automatically.
+
+#### Processing a Video
+You can use the command-line interface to process images directly:
+```
+python3 predict.py --type video --path path/to/video.mp4 --conf-threshold 0.1 --show-conf True
+```
+- The results will be saved at `runs/videos`. The `runs` directory will be created automatically.
+
+#### Using the GUI
+To launch the Tkinter GUI:
+```
+python3 app.py
+```
+In the GUI, you can:
+- Upload Image: Upload an image and process it for brittle star detection.
+- Upload Video: Upload a video and process it for brittle star detection.
+- View Result: View the processed image or video. The processed files are saved in the `runs/images` and `runs/videos` directories.
