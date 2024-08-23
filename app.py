@@ -38,7 +38,7 @@ class App:
         self.status_label.pack(pady=20)
 
         # Canvas to display images
-        self.canvas = tk.Canvas(root, width=800, height=800, bg="black")
+        self.canvas = tk.Canvas(root, width=640, height=640, bg="black")
         self.canvas.pack()
 
         # Track the type of the last processed result
@@ -161,7 +161,8 @@ class App:
         if self.last_operation == "image":
             # Load and display the processed image on the canvas
             img = Image.open(self.result_image_path)
-            img = img.resize((800, 800), Image.Resampling.LANCZOS)
+            # Resize the image to fit the canvas
+            img = img.resize((640, 640), Image.Resampling.LANCZOS)
             img_tk = ImageTk.PhotoImage(img)
             self.canvas.create_image(0, 0, anchor=tk.NW, image=img_tk)
             self.canvas.image = img_tk  # keep a reference to avoid garbage collection
