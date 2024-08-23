@@ -3,3 +3,4 @@ __pycache__
 weights/best.pt
 weights/last.pt
 videos/
+test.py
