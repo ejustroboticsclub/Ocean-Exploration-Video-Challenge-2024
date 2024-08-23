@@ -90,12 +90,18 @@ python3 predict.py --type image --path path/to/image.jpg --conf-threshold 0.1 --
 - `show-conf`: If set to True, the confidence scores will be displayed on the bounding boxes drawn around detected brittle stars.
 - The results will be saved at `runs/images`. The `runs` directory will be created automatically.
 
+
+</br>
+
 #### Processing a Video
 You can use the command-line interface to process images directly:
 ```
 python3 predict.py --type video --path path/to/video.mp4 --conf-threshold 0.1 --show-conf True
 ```
 - The results will be saved at `runs/videos`. The `runs` directory will be created automatically.
+
+
+</br>
 
 #### Using the GUI
 To launch the Tkinter GUI:
