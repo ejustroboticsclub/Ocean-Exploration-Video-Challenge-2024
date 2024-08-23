@@ -69,7 +69,7 @@ ___
    ```
    cd Ocean-Exploration-Video-Challenge-2024
    ```
-1. Download the [weights file]()(`last.pt`) of the trained model and put it in the `weights` directory.
+1. Download the [weights file](https://www.kaggle.com/models/amromeshref/brittle-stars-detection/)(`last.pt`) of the trained model and put it in the `weights` directory.
 1. Type the following command to install the requirements file using pip:
    ```
    pip install -r requirements.txt
@@ -113,3 +113,6 @@ In the GUI, you can:
 - Upload Image: Upload an image and process it for brittle star detection.
 - Upload Video: Upload a video and process it for brittle star detection.
 - View Result: View the processed image or video. The processed files are saved in the `runs/images` and `runs/videos` directories.
+
+
+#### Using Code Snipp
