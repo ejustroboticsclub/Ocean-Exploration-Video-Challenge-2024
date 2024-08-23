@@ -95,7 +95,7 @@ python3 predict.py --type image --path path/to/image.jpg --conf-threshold 0.1 --
 </br>
 
 #### Processing a Video
-You can use the command-line interface to process images directly:
+You can use the command-line interface to process videos directly:
 ```
 python3 predict.py --type video --path path/to/video.mp4 --conf-threshold 0.1 --show-conf True
 ```
@@ -115,4 +115,63 @@ In the GUI, you can:
 - View Result: View the processed image or video. The processed files are saved in the `runs/images` and `runs/videos` directories.
 
 
-#### Using Code Snipp
+#### Using Code Snippet
+
+To run the model on an input image and draw bounding boxes on it:
+```python
+from predict import Predictor
+import cv2
+
+# Create a Predictor object
+predictor = Predictor()
+
+# Define the path to the image
+image_path = "/path/to/image.jpg"
+
+# Read the image using OpenCV
+image = cv2.imread(image_path)
+
+# Run the model on the image
+results = predictor.predict(image)
+
+# Draw bounding boxes on the image
+image_with_boxes = predictor.draw_bounding_boxes(image, results, conf_threshold=0.1, show_conf=True)
+
+# Display the image with bounding boxes
+cv2.imshow("image", image_with_boxes)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+</br>
+To run the model on an input video and draw bounding boxes on it:
+```python
+from predict import Predictor
+import cv2
+
+# Create a Predictor object
+predictor = Predictor()
+
+# Define the path to the input video
+video_path = "path/to/video.mp4"
+
+# Read the input video and process it frame by frame
+video = cv2.VideoCapture(video_path)
+while video.isOpened():
+    ret, frame = video.read()
+    if not ret:
+        break
+
+    # Predict and draw bounding boxes
+    results = predictor.predict(frame)
+    frame_with_boxes = predictor.draw_bounding_boxes(frame, results, conf_threshold=0.1, show_conf=True)
+
+    # Display the frame with bounding boxes
+    cv2.imshow('frame', frame_with_boxes)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Release the video objects
+video.release()
+cv2.destroyAllWindows()
+```
