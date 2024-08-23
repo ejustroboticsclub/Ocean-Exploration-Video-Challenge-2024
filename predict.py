@@ -38,7 +38,7 @@ class Predictor:
                 bounding_boxes = box.xyxy.cpu().numpy()
 
                 # Get the confidence scores
-                scores = box.conf.cpu().numpy()  
+                scores = box.conf.cpu().numpy()
 
                 for bounding_box, score in zip(bounding_boxes, scores):
                     # Filter out weak detections
@@ -144,7 +144,7 @@ class Predictor:
             cv2.imshow("frame", frame)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
-        
+
         print("Video saved at:", output_path)
 
         # Release everything if the job is finished
