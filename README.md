@@ -1,11 +1,32 @@
-# Folder Structure
-1. `data/`: Stores various datasets and information crucial for this task.
-     - `data/external`: Contains datasets and information sourced from external sources, such as publicly available datasets, third-party providers, or other research projects. These datasets may include images, videos, sensor data, or other types of input data used for training and testing AI models.
-     - `data/processed`: Stores the finalized and processed datasets ready for training AI models.
-1. `images/`: Contains the images used in this directory, including those utilized for making predictions.
-1. `models/`: Stores models used for AI training in this task.
-   - `models/best-models`: stores the best-performing models selected from the trained models based on certain criteria, such as performance metrics like accuracy, precision, or loss.
-   - `models/trained-models`: Contains all trained models, including intermediate models generated during the training process.  
-1. `notebooks/`: Contains Jupyter notebooks used for various purposes within this task.
-1. `results/`: Stores the output, findings, and outcomes generated from various analyses, experiments, or simulations conducted as part of this task. 
-1. `src/`: Serves as the main source code folder for this task.
+# Ocean Exploration Video Challenge 2024
+
+This repository showcases the development of a deep learning model for detecting brittle stars in underwater images using the YOLOv8 (You Only Look Once) object detection framework. This project was created for the Ocean Exploration Video Challenge, organized by the MATE ROV Competition in partnership with NOAA Ocean Exploration. The challenge aims to streamline the annotation process of organisms in remotely operated vehicle (ROV) dive videos, focusing specifically on the continuous tracking and annotation of brittle stars. Accurate detection and tracking of these marine invertebrates are crucial for monitoring biodiversity and assessing the health of marine ecosystems. By participating in this competition, the project contributes to advancing AI-driven tools that aid in the exploration and understanding of our oceans.
+
+
+## Dataset
+
+The datasets used for this project were sourced from Roboflow, a platform providing various annotated datasets for computer vision tasks. The images in the dataset were captured underwater, containing various marine organisms, including brittle stars. These images were particularly valuable for training the YOLO models due to their realistic and challenging underwater conditions, such as varying lighting and complex backgrounds.
+The specific datasets utilized are as follows:
+
+- [Source 1](#https://universe.roboflow.com/test-xsnip/mate-brittle-star-detection)
+- [Source 2](#https://universe.roboflow.com/raghad-abo-el-eneen/sea-creatures-detection)
+- [Source 3](#https://universe.roboflow.com/rowan-mohamed/optimized_result)
+- [Source 4](#https://universe.roboflow.com/noaa-wg5ah/brittle-stars)
+
+### Dataset Versions
+
+To explore different approaches for brittle star detection, two versions of the dataset were created, each with a distinct labeling strategy:
+- Version 1: Brittle Star Only
+In this version, the dataset consists of images that contain brittle stars exclusively. The labeling focuses solely on the brittle stars, with bounding boxes drawn around them. This approach resulted in a single-class dataset, where the only class is "Brittle Star." This version is designed to train the model to specifically recognize and locate brittle stars in the images, ignoring other organisms present. The dataset was split as follows:
+- Total Images: 3,031
+- Training Set: 2,121 images (70%)
+- Validation Set: 606 images (20%)
+- Test Set: 304 images (10%)
+
+
+- Version 2: Brittle Star and Not Brittle Star
+The second version of the dataset introduces a two-class labeling scheme. In addition to labeling brittle stars, any other organism present in the images is labeled as "Not Brittle Star." This version of the dataset provides a more comprehensive approach, allowing the model to distinguish between brittle stars and other marine organisms. The "Not Brittle Star" class encompasses all non-brittle star entities, ensuring that the model can differentiate brittle stars from other similar-looking objects. The dataset was split as follows:
+- Total Images: 6,085
+- Training Set: 3,656 images (60%)
+- Validation Set: 1,218 images (20%)
+- Test Set: 1,211 images (20%)
