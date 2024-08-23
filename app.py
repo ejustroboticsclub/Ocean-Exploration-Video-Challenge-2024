@@ -45,6 +45,13 @@ class App:
         self.last_operation = None
 
     def reset_gui(self):
+        """
+        Reset the GUI before starting a new operation.
+        Args:
+            None
+        Returns:
+            None
+        """
         # Clear the canvas
         self.canvas.delete("all")
 
@@ -58,6 +65,13 @@ class App:
         self.last_operation = None
 
     def upload_image(self):
+        """
+        Open a file dialog to upload an image.
+        Args:
+            None
+        Returns:
+            None
+        """
         # Reset GUI before starting a new operation
         self.reset_gui()
 
@@ -71,6 +85,13 @@ class App:
                              args=(file_path,)).start()
 
     def upload_video(self):
+        """
+        Open a file dialog to upload a video.
+        Args:
+            None
+        Returns:
+            None
+        """
         # Reset GUI before starting a new operation
         self.reset_gui()
 
@@ -83,7 +104,14 @@ class App:
             threading.Thread(target=self.process_video,
                              args=(file_path,)).start()
 
-    def process_image(self, file_path):
+    def process_image(self, file_path: str):
+        """
+        Process the image at the specified path and save the image with bounding boxes.
+        Args:
+            file_path (str) - The path to the input image.
+        Returns:
+            None
+        """
         try:
             # Read the image
             image = cv2.imread(file_path)
@@ -112,7 +140,14 @@ class App:
             self.status_label.config(
                 text="An error occurred in processing the image. Please try again.")
 
-    def process_video(self, file_path):
+    def process_video(self, file_path: str):
+        """
+        Process the video at the specified path and save the video with bounding boxes.
+        Args:
+            file_path (str) - The path to the input video.
+        Returns:
+            None
+        """
         try:
             cap = cv2.VideoCapture(file_path)
 
@@ -158,6 +193,13 @@ class App:
                 text="An error occurred in processing the video. Please try again.")
 
     def view_result(self):
+        """
+        View the processed image or video.
+        Args:
+            None
+        Returns:
+            None
+        """
         if self.last_operation == "image":
             # Load and display the processed image on the canvas
             img = Image.open(self.result_image_path)
@@ -175,20 +217,6 @@ class App:
                 os.system(f'open "{self.result_video_path}"')
             else:  # Linux and other platforms
                 os.system(f'xdg-open "{self.result_video_path}"')
-
-    def save_result_image(self):
-        save_path = filedialog.asksaveasfilename(
-            defaultextension=".png", filetypes=[("PNG files", "*.png")])
-        if save_path:
-            img = Image.open(self.result_image_path)
-            img.save(save_path)
-
-    def save_result_video(self):
-        save_path = filedialog.asksaveasfilename(
-            defaultextension=".mp4", filetypes=[("MP4 files", "*.mp4")])
-        if save_path:
-            import shutil
-            shutil.copy(self.result_video_path, save_path)
 
 
 if __name__ == "__main__":
