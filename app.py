@@ -3,8 +3,9 @@ from tkinter import filedialog, Label, Button
 from PIL import Image, ImageTk
 import cv2
 import threading
-import numpy as np
-from predict import Predictor  # Importing the Predictor class
+from predict import Predictor
+from datetime import datetime
+import os
 
 class App:
     def __init__(self, root, predictor):
@@ -14,7 +15,7 @@ class App:
         self.root.configure(bg="black")  # Set background to black
 
         # Create buttons for image and video upload with black background and red font color
-        button_style = {"bg": "black", "fg": "red", "bd": 2}
+        button_style = {"bg": "black", "fg": "red", "bd": 2, "font": ("Helvetica", 16), "width": 20, "height": 2}
 
         self.upload_image_btn = Button(root, text="Upload Image", command=self.upload_image, **button_style)
         self.upload_image_btn.pack(pady=10)
@@ -31,7 +32,7 @@ class App:
         self.status_label.pack(pady=20)
 
         # Canvas to display images
-        self.canvas = tk.Canvas(root, width=600, height=400, bg="black")
+        self.canvas = tk.Canvas(root, width=800, height=800, bg="black")
         self.canvas.pack()
 
         # Track the type of the last processed result
@@ -67,55 +68,63 @@ class App:
             threading.Thread(target=self.process_video, args=(file_path,)).start()
 
     def process_image(self, file_path):
-        # Read the image
-        image = cv2.imread(file_path)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        # Predict and draw bounding boxes
-        results = self.predictor.predict(image)
-        image_with_boxes = self.predictor.draw_bounding_boxes(image, results)
-
-        # Convert the image to a format Tkinter can display
-        image_pil = Image.fromarray(image_with_boxes)
-        self.result_image_path = "result_image.png"
-        image_pil.save(self.result_image_path)
-
-        self.status_label.config(text="Processing complete. Click 'View Result' to see the image.")
-        self.view_result_btn.config(state=tk.NORMAL)
-
-    def process_video(self, file_path):
-        cap = cv2.VideoCapture(file_path)
-        output_path = "result_video.avi"
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter(output_path, fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
-        i = 0
-        while cap.isOpened():
-            ret, frame = cap.read()
-            if not ret:
-                break
+        try:
+            # Read the image
+            image = cv2.imread(file_path)
 
             # Predict and draw bounding boxes
-            results = self.predictor.predict(frame)
-            frame_with_boxes = self.predictor.draw_bounding_boxes(frame, results)
+            results = self.predictor.predict(image)
+            image_with_boxes = self.predictor.draw_bounding_boxes(image, results)
 
-            # Write the processed frame to the output video
-            out.write(frame_with_boxes)
-            i+=1
-            if i == 10:
-                break
+            # Convert the image to a format Tkinter can display
+            image_pil = Image.fromarray(image_with_boxes)
+            current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
+            image_name, _ = os.path.splitext(os.path.basename(file_path))
+            os.makedirs("runs/images", exist_ok=True)
+            self.result_image_path = "runs/images/" + f"{image_name}_{current_time}" + ".jpg"
+            image_pil.save(self.result_image_path)
 
-        cap.release()
-        out.release()
+            self.status_label.config(text="Processing complete. Click 'View Result' to see the image.")
+            self.view_result_btn.config(state=tk.NORMAL)
+        except Exception as e:
+            self.status_label.config(text="An error occurred in processing the image. Please try again.")
 
-        self.result_video_path = output_path
-        self.status_label.config(text="Processing complete. Click 'View Result' to see the video.")
-        self.view_result_btn.config(state=tk.NORMAL)
+    def process_video(self, file_path):
+        try:
+            cap = cv2.VideoCapture(file_path)
+            current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
+            video_name, _ = os.path.splitext(os.path.basename(file_path))
+            os.makedirs("runs/videos", exist_ok=True)
+            output_path = "runs/videos/" + f"{video_name}_{current_time}" + ".mp4"
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+            out = cv2.VideoWriter(output_path, fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
+            
+            while cap.isOpened():
+                ret, frame = cap.read()
+                if not ret:
+                    break
+
+                # Predict and draw bounding boxes
+                results = self.predictor.predict(frame)
+                frame_with_boxes = self.predictor.draw_bounding_boxes(frame, results)
+
+                # Write the processed frame to the output video
+                out.write(frame_with_boxes)
+
+            cap.release()
+            out.release()
+
+            self.result_video_path = output_path
+            self.status_label.config(text="Processing complete. Click 'View Result' to see the video.")
+            self.view_result_btn.config(state=tk.NORMAL)
+        except Exception as e:
+            self.status_label.config(text="An error occurred in processing the video. Please try again.")
 
     def view_result(self):
         if self.last_operation == "image":
             # Load and display the processed image on the canvas
             img = Image.open(self.result_image_path)
-            img = img.resize((600, 400), Image.Resampling.LANCZOS)
+            img = img.resize((800, 800), Image.Resampling.LANCZOS)
             img_tk = ImageTk.PhotoImage(img)
             self.canvas.create_image(0, 0, anchor=tk.NW, image=img_tk)
             self.canvas.image = img_tk  # keep a reference to avoid garbage collection
