@@ -93,6 +93,7 @@ class Predictor:
         result_image_path = "runs/images/" + \
             f"{image_name}_{current_time}" + ".jpg"
         cv2.imwrite(result_image_path, image_with_boxes)
+        print("Image saved at:", result_image_path)
 
         # Display the image with bounding boxes
         cv2.imshow("image", image_with_boxes)
@@ -111,7 +112,7 @@ class Predictor:
         """
         cap = cv2.VideoCapture(video_path)
 
-        # Define codec and create VideoWriter object
+        # Define the codec
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         fps = cap.get(cv2.CAP_PROP_FPS)
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -143,6 +144,8 @@ class Predictor:
             cv2.imshow("frame", frame)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
+        
+        print("Video saved at:", output_path)
 
         # Release everything if the job is finished
         cap.release()
