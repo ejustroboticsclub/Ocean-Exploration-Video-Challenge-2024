@@ -44,7 +44,7 @@ class App:
         # Track the type of the last processed result
         self.last_operation = None
 
-    def reset_gui(self):
+    def reset_gui(self) -> None:
         """
         Reset the GUI before starting a new operation.
         Args:
@@ -64,7 +64,7 @@ class App:
         # Reset last operation type
         self.last_operation = None
 
-    def upload_image(self):
+    def upload_image(self) -> None:
         """
         Open a file dialog to upload an image.
         Args:
@@ -84,7 +84,7 @@ class App:
             threading.Thread(target=self.process_image,
                              args=(file_path,)).start()
 
-    def upload_video(self):
+    def upload_video(self) -> None:
         """
         Open a file dialog to upload a video.
         Args:
@@ -104,7 +104,7 @@ class App:
             threading.Thread(target=self.process_video,
                              args=(file_path,)).start()
 
-    def process_image(self, file_path: str):
+    def process_image(self, file_path: str) -> None:
         """
         Process the image at the specified path and save the image with bounding boxes.
         Args:
@@ -140,7 +140,7 @@ class App:
             self.status_label.config(
                 text="An error occurred in processing the image. Please try again.")
 
-    def process_video(self, file_path: str):
+    def process_video(self, file_path: str) -> None:
         """
         Process the video at the specified path and save the video with bounding boxes.
         Args:
@@ -192,7 +192,7 @@ class App:
             self.status_label.config(
                 text="An error occurred in processing the video. Please try again.")
 
-    def view_result(self):
+    def view_result(self) -> None:
         """
         View the processed image or video.
         Args:
