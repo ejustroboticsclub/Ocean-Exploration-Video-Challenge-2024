@@ -54,3 +54,11 @@ ___
 - numpy
 - tkinter
 - pillow
+___
+
+## Installation
+1. Create a new environment with a 3.9 Python version.
+1. Clone the repository:
+   ```
+   git clone https://github.com/ejustroboticsclub/Ocean-Exploration-Video-Challenge-2024.git
+   ```
