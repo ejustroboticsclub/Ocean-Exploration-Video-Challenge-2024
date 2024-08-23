@@ -2,6 +2,10 @@
 
 This repository showcases the development of a deep learning model for detecting brittle stars in underwater images using the YOLOv8 (You Only Look Once) object detection framework. This project was created for the Ocean Exploration Video Challenge, organized by the MATE ROV Competition in partnership with NOAA Ocean Exploration. The challenge aims to streamline the annotation process of organisms in remotely operated vehicle (ROV) dive videos, focusing specifically on the continuous tracking and annotation of brittle stars. Accurate detection and tracking of these marine invertebrates are crucial for monitoring biodiversity and assessing the health of marine ecosystems. By participating in this competition, the project contributes to advancing AI-driven tools that aid in the exploration and understanding of our oceans.
 
+## Table of Contents
+1. [Dataset](#dataset)
+
+___
 
 ## Dataset
 
