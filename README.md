@@ -114,6 +114,7 @@ In the GUI, you can:
 - Upload Video: Upload a video and process it for brittle star detection.
 - View Result: View the processed image or video. The processed files are saved in the `runs/images` and `runs/videos` directories.
 
+</br>
 
 #### Using Code Snippet
 
@@ -144,7 +145,9 @@ cv2.destroyAllWindows()
 ```
 
 </br>
+
 To run the model on an input video and draw bounding boxes on it:
+
 ```python
 from predict import Predictor
 import cv2
