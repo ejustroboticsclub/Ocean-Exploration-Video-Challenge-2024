@@ -7,6 +7,7 @@ This repository showcases the development of a deep learning model for detecting
 1. [Scripts](#scripts)
 1. [Requirements](#requirements)
 1. [Installation](#installation)
+1. [Usage](#usage)
 ___
 
 ## Dataset
