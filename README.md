@@ -69,7 +69,7 @@ ___
    ```
    cd Ocean-Exploration-Video-Challenge-2024
    ```
-1. Download the [weights file](https://www.kaggle.com/models/amromeshref/brittle-stars-detection/)(`last.pt`) of the trained model and put it in the `weights` directory.
+1. Download the [weights file](https://www.kaggle.com/models/amromeshref/brittle-stars-detection/) (`last.pt`) of the trained model and put it in the `weights` directory.
 1. Type the following command to install the requirements file using pip:
    ```
    pip install -r requirements.txt
