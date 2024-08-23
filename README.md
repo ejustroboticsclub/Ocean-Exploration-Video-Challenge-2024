@@ -53,8 +53,9 @@ ___
 - ultralytics
 - opencv-python
 - numpy
-- tkinter
 - pillow
+- tkinter (included with Python standard library)
+
 ___
 
 ## Installation
