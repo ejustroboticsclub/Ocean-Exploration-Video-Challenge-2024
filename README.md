@@ -4,7 +4,8 @@ This repository showcases the development of a deep learning model for detecting
 
 ## Table of Contents
 1. [Dataset](#dataset)
-
+1. [Scripts](#scripts)
+1. [Requirements](#requirements)
 ___
 
 ## Dataset
@@ -38,3 +39,18 @@ The second version of the dataset introduces a two-class labeling scheme. In add
   - This dataset is located at `data/external/version-02`
 
 ___
+
+## Scripts
+
+- **`predict.py`**: Contains the `Predictor` class, which handles the detection and bounding box drawing functionalities for both images and videos.
+- **`app.py`**: Contains the `App` class, which builds a Tkinter-based GUI for uploading and processing images and videos.
+
+___
+## Requirements
+
+- Python 3.9
+- ultralytics
+- opencv-python
+- numpy
+- tkinter
+- pillow
