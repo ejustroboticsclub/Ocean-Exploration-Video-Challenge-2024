@@ -12,10 +12,10 @@ ___
 The datasets used for this project were sourced from Roboflow, a platform providing various annotated datasets for computer vision tasks. The images in the dataset were captured underwater, containing various marine organisms, including brittle stars. These images were particularly valuable for training the YOLO models due to their realistic and challenging underwater conditions, such as varying lighting and complex backgrounds.
 The specific datasets utilized are as follows:
 
-- [Source 1](#https://universe.roboflow.com/test-xsnip/mate-brittle-star-detection)
-- [Source 2](#https://universe.roboflow.com/raghad-abo-el-eneen/sea-creatures-detection)
-- [Source 3](#https://universe.roboflow.com/rowan-mohamed/optimized_result)
-- [Source 4](#https://universe.roboflow.com/noaa-wg5ah/brittle-stars)
+- [Source 1](https://universe.roboflow.com/test-xsnip/mate-brittle-star-detection)
+- [Source 2](https://universe.roboflow.com/raghad-abo-el-eneen/sea-creatures-detection)
+- [Source 3](https://universe.roboflow.com/rowan-mohamed/optimized_result)
+- [Source 4](https://universe.roboflow.com/noaa-wg5ah/brittle-stars)
 
 ### Dataset Versions
 
@@ -26,6 +26,7 @@ In this version, the dataset consists of images that contain brittle stars exclu
   - Training Set: 2,121 images (70%)
   - Validation Set: 606 images (20%)
   - Test Set: 304 images (10%)
+  - This dataset is located at `data/external/version-01`
 
 
 - **Version 2: Brittle Star and Not Brittle Star** </br>
@@ -34,3 +35,6 @@ The second version of the dataset introduces a two-class labeling scheme. In add
   - Training Set: 3,656 images (60%)
   - Validation Set: 1,218 images (20%)
   - Test Set: 1,211 images (20%)
+  - This dataset is located at `data/external/version-02`
+
+___
