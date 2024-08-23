@@ -42,8 +42,8 @@ ___
 
 ## Scripts
 
-- **`predict.py`**: Contains the `Predictor` class, which handles the detection and bounding box drawing functionalities for both images and videos.
-- **`app.py`**: Contains the `App` class, which builds a Tkinter-based GUI for uploading and processing images and videos.
+- **`predict.py`**: </br> Contains the `Predictor` class, which handles the detection and bounding box drawing functionalities for both images and videos.
+- **`app.py`**: </br> Contains the `App` class, which builds a Tkinter-based GUI for uploading and processing images and videos.
 
 ___
 ## Requirements
