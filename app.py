@@ -128,8 +128,9 @@ class App:
             current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
             image_name, _ = os.path.splitext(os.path.basename(file_path))
             os.makedirs("runs/images", exist_ok=True)
-            self.result_image_path = "runs/images/" + \
-                f"{image_name}_{current_time}" + ".jpg"
+            pwd = os.getcwd()
+            self.result_image_path = os.path.join(
+                pwd, "runs", "images", f"{image_name}_{current_time}" + ".jpg")
             image_pil.save(self.result_image_path)
 
             # Update the status label and enable the View Result button
@@ -155,8 +156,9 @@ class App:
             current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
             video_name, _ = os.path.splitext(os.path.basename(file_path))
             os.makedirs("runs/videos", exist_ok=True)
-            output_path = "runs/videos/" + \
-                f"{video_name}_{current_time}" + ".mp4"
+            pwd = os.getcwd()
+            output_path = os.path.join(
+                pwd, "runs", "videos", f"{video_name}_{current_time}" + ".mp4")
 
             # Define codec
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -166,7 +168,7 @@ class App:
 
             # Create the VideoWriter object
             out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
-
+            
             while cap.isOpened():
                 ret, frame = cap.read()
                 if not ret:
