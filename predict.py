@@ -90,8 +90,9 @@ class Predictor:
         current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
         image_name, _ = os.path.splitext(os.path.basename(image_path))
         os.makedirs("runs/images", exist_ok=True)
-        result_image_path = "runs/images/" + \
-            f"{image_name}_{current_time}" + ".jpg"
+        pwd = os.getcwd()
+        result_image_path = os.path.join(
+            pwd, "runs", "images", f"{image_name}_{current_time}" + ".jpg")
         cv2.imwrite(result_image_path, image_with_boxes)
         print("Image saved at:", result_image_path)
 
@@ -122,7 +123,9 @@ class Predictor:
         current_time = datetime.now().strftime("%Y-%m-%d-%I-%M-%S")
         video_name, _ = os.path.splitext(os.path.basename(video_path))
         os.makedirs("runs/videos", exist_ok=True)
-        output_path = "runs/videos/" + f"{video_name}_{current_time}" + ".mp4"
+        pwd = os.getcwd()
+        output_path = os.path.join(
+            pwd, "runs", "videos", f"{video_name}_{current_time}" + ".mp4")
 
         # Create the VideoWriter object
         out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
